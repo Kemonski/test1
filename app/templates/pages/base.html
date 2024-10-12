@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>yes</title>
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+</head>
+<body>
+
+    {% include "pages/navbar.html" %}
+
+ {% block content %}
+ 
+ {% endblock content %} 
+    <script src="{% static "js/base.js" %}"></script>
+
+</body>
+</html>
