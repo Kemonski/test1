@@ -1,0 +1,14 @@
+{% extends "pages/base.html" %}
+{% load static %}
+ 
+{% block content %}
+
+    <h1>Delete Pet</h1>
+    <form action="{% url 'crud_delete' object.pk %}" method="post">
+        {% csrf_token %}
+        <p> Are You Sure You Want To Delete This Pet "{{pet.title}}"? </p>
+        <input type="submit" value="Yes">
+        <button type="button" onclick="location.href='{% url 'crud' %}'">No</button>
+    </form>
+
+{% endblock content %}

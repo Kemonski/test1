@@ -1,0 +1,22 @@
+{% extends "pages/base.html" %}
+{% load static %}
+ 
+{% block content %}
+
+<a href="{% url 'crud_new' %}"> New Pet </a>
+
+    {% for pet in pet_list %}
+
+    <div class="pet-crud">
+    <h2>{{pet.name}}</h2>
+    <p>{{pet.species}}</p>
+    <p>{{pet.breed}}</p>
+    <p>{{pet.age}}</p>
+    <p>{{pet.adoption_status}}</p>
+    <a href="{% url 'crud_update' pet.pk %}">Edit</a>
+    <a href="{% url 'crud_delete' pet.pk %}">Delete</a>
+    </div>
+
+    {% endfor %}
+
+{% endblock content %}

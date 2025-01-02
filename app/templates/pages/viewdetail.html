@@ -1,0 +1,16 @@
+{% extends "pages/base.html" %}
+{% load static %}
+ 
+{% block content %}
+
+    <div class="pet-crud">
+    <h2>{{viewthepet.name}}</h2>
+    <p>{{viewthepet.species}}</p>
+    <p>{{viewthepet.breed}}</p>
+    <p>{{viewthepet.age}}</p>
+    <p>{{viewthepet.adoption_status}}</p>
+    </div>
+
+<a href="{% url 'crud' %}"> Back to Pets </a>
+
+{% endblock content %}
