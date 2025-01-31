@@ -6,14 +6,14 @@
 
 <br><br>
 
-<a href="{% url 'crud_new' %}"> New Pet </a>
+<a href="{% url 'lost_and_found_create' %}"> New Pet </a>
 
 <br><br><br>
 
-{% for pet in pet_list %}
+{% for lost in lost %}
 
     <div class="petviews">
-        <li><a href="{% url 'crud_detail' pet.pk %}">{{ pet.name }}</a></li>
+        <li><a href="{% url 'lost_and_found_detail' lost.pk %}">{{ lost.title }}</a></li>
     </div>
 
     {% endfor %}

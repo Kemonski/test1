@@ -1,0 +1,18 @@
+{% extends "pages/base.html" %}
+{% load static %}
+ 
+{% block content %}
+
+    <div class="pet-crud">
+    <h2>{{lost.title}}</h2>
+    <p>{{lost.species}}</p>
+    <p>{{lost.breed}}</p>
+    <p>{{lost.description}}</p>
+    <p>{{lost.status}}</p>
+    <a href="{% url 'lost_and_found_update' lost.pk %}">Edit</a>
+    <a href="{% url 'lost_and_found_delete' lost.pk %}">Delete</a>
+    </div>
+    <a href="{% url 'found' %}">Back</a>
+
+
+{% endblock content %}

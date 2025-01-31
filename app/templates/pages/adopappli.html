@@ -1,0 +1,18 @@
+{% extends "pages/base.html" %}
+    {% load static %}
+     
+    {% block content %}
+
+    <a href="{% url 'applicreate' %}">Adoptation Application</a>
+    
+    {% for app in app %}
+
+    <div class="petviews">
+        <p>{{app.title}}</p>
+        <p>{{app.applicant}}</p>
+        <p>{{app.status}}</p>
+    </div>
+
+    {% endfor %}
+    
+    {% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "pages/base.html" %}
+    {% load static %}
+     
+    {% block content %}
+
+    <a href="{% url 'healthcr' %}">Add Health Records For Pet</a>
+    
+    {% for health in health %}
+
+    <div class="petviews">
+        <p>{{health.pet}}</p>
+        <p>{{health.checkup_date}}</p>
+        <p>{{health.notes}}</p>
+    </div>
+
+    {% endfor %}
+    
+    {% endblock content %}

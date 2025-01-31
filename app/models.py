@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.urls import reverse
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=15)
 
     def __str__(self):
@@ -29,19 +29,25 @@ class LostAndFound(models.Model):
     species = models.CharField(max_length=50)
     status = models.CharField(max_length=10)
     description = models.TextField()
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse("lost_and_found_detail", kwargs={"pk": self.pk})
 
 
 class AdoptionApplication(models.Model):
     pet = models.OneToOneField(Pet, on_delete=models.CASCADE)
-    applicant = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, default='Pending')
 
     def __str__(self):
         return f"{self.applicant.username} - {self.pet.name}"
+    
+    def get_absolute_url(self):
+        return reverse("applic", kwargs={"pk": self.pk})
 
 
 class PetHealthRecord(models.Model):
@@ -51,3 +57,6 @@ class PetHealthRecord(models.Model):
 
     def __str__(self):
         return f"Health Record for {self.pet.name}"
+    
+    def get_absolute_url(self):
+        return reverse("healthy", kwargs={"pk": self.pk})
